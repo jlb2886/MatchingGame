@@ -13,10 +13,10 @@ public class MyMultiThreadedServer{
          try{
          
          //these 2 lines will get op address of this client/machine
-         System.out.println("getLocalHost: "+ InetAddress.getLocalHost() );
-         System.out.println("getByName: "+ InetAddress.getByName("localhost") );
+         //System.out.println("getLocalHost: "+ InetAddress.getLocalHost() );
+         //System.out.println("getByName: "+ InetAddress.getByName("localhost") );
          
-         ServerSocket ss = new ServerSocket(16789); //creates/opens the socket for the server
+         ServerSocket ss = new ServerSocket(5555); //creates/opens the socket for the server
          Socket cs = null;
          
          while(true){

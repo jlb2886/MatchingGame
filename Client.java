@@ -8,10 +8,10 @@ public class MyClient{
       try{
          
          //these 2 lines will get op address of this client/machine
-         System.out.println("getLocalHost: "+ InetAddress.getLocalHost() );
-         System.out.println("getByName: "+ InetAddress.getByName("localhost") );
+         //System.out.println("getLocalHost: "+ InetAddress.getLocalHost() );
+        // System.out.println("getByName: "+ InetAddress.getByName("localhost") );
          
-         Socket s = new Socket("localhost", 16789);
+         Socket s = new Socket("192.168.1.4", 5555);
          
          //in from the clent
          BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
