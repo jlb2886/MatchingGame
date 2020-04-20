@@ -17,7 +17,7 @@ public class MyGui implements ActionListener{
    
    public MyGui() {
       //Chat
-      JFrame jfClient = new JFrame("Client");
+      JFrame jfClient = new JFrame("Matching Game Client");
       JPanel jpClient = new JPanel(new BorderLayout());
       jtaChat = new JTextArea(20,20);
       jtfChat = new JTextField(20);
@@ -26,11 +26,15 @@ public class MyGui implements ActionListener{
       JButton jbChat = new JButton("Send");
       
       Icon icon1 = new ImageIcon("BK.png");
-      JButton card1 = new JButton(icon1);
+      JButton jbCard1 = new JButton("^^^");
+      jbCard1.setSize(5,5);
+      JLabel jlCard1 = new JLabel();
+      jlCard1.setIcon(icon1);
       
       JPanel jpChat = new JPanel(new GridLayout(2,1));
       JPanel jpChatSend = new JPanel(new GridLayout(3,1));
       JPanel jpGames = new JPanel(new GridLayout(2,5));
+      JPanel jpCard1 = new JPanel(new GridLayout(2,1));
       JPanel jpUser = new JPanel(new GridLayout(1,2));
       
       jpChat.add(jtaChat);
@@ -39,7 +43,9 @@ public class MyGui implements ActionListener{
       jpChatSend.add(jpUser);
       jpChatSend.add(jtfChat);
       jpChatSend.add(jbChat);
-      jpGames.add(card1);
+      jpCard1.add(jlCard1);
+      jpCard1.add(jbCard1);
+      jpGames.add(jpCard1);
       jpChat.add(jpChatSend);
       jpClient.add(jpChat, BorderLayout.WEST);
       jpClient.add(jpGames, BorderLayout.EAST);
