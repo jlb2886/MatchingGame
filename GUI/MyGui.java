@@ -317,8 +317,41 @@ public class MyGui implements ActionListener{
    public void getIcon(int inPosition){
       //Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
     /*
-      jlCard**.setIcon(cards[arr[inPosition]]);
-      ** = inPosition. How to get that?
+      *arr = array from server*
+      
+      if(inPosition == 1) {
+         jlCard1.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 2) {
+         jlCard2.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 3) {
+         jlCard3.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 4) {
+         jlCard4.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 5) {
+         jlCard5.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 6) {
+         jlCard6.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 7) {
+         jlCard7.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 8) {
+         jlCard8.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 9) {
+         jlCard9.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 10) {
+         jlCard10.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 11) {
+         jlCard11.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 12) {
+         jlCard12.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 13) {
+         jlCard13.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 14) {
+         jlCard14.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 15) {
+         jlCard15.setIcon(cards[arr[inPosition]]);
+      } else if(inPosition == 16) {
+         jlCard16.setIcon(cards[arr[inPosition]]);
+      }
     **/
       
    }
