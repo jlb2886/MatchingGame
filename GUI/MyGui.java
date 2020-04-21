@@ -10,6 +10,18 @@ public class MyGui implements ActionListener{
    private JTextField jtfChat;
    private JTextField jtfUser;
    private JLabel jlUser;
+   private Icon back;
+   private Icon c2;
+   private JLabel jlCard1;
+   private JLabel jlCard2;
+   private JLabel jlCard3;
+   private JLabel jlCard4;
+   private JLabel jlCard5;
+   private JLabel jlCard6;
+   private JLabel jlCard7;
+   private JLabel jlCard8;
+   private JLabel jlCard9;
+   private JLabel jlCard10;
    private JTextArea jtaChat;
    private Socket s;
    private BufferedReader br;
@@ -25,16 +37,61 @@ public class MyGui implements ActionListener{
       jlUser = new JLabel("Username: ");
       JButton jbChat = new JButton("Send");
       
-      Icon icon1 = new ImageIcon("BK.png");
-      JButton jbCard1 = new JButton("^^^");
-      jbCard1.setSize(5,5);
-      JLabel jlCard1 = new JLabel();
-      jlCard1.setIcon(icon1);
+      back = new ImageIcon("BK.png");
+      c2 = new ImageIcon("C2.png");
+      JButton jbCard1 = new JButton("1 ^^^");
+      jlCard1 = new JLabel();
+      jlCard1.setIcon(back);
+      //Card 2
+      JButton jbCard2 = new JButton("2 ^^^");
+      jlCard2 = new JLabel();
+      jlCard2.setIcon(back);
+      //Card 3
+      JButton jbCard3 = new JButton("3 ^^^");
+      jlCard3 = new JLabel();
+      jlCard3.setIcon(back);
+      //Card 4
+      JButton jbCard4 = new JButton("4 ^^^");
+      jlCard4 = new JLabel();
+      jlCard4.setIcon(back);
+      //Card 5
+      JButton jbCard5 = new JButton("5 ^^^");
+      jlCard5 = new JLabel();
+      jlCard5.setIcon(back);
+      //Card 6
+      JButton jbCard6 = new JButton("6 ^^^");
+      jlCard6 = new JLabel();
+      jlCard6.setIcon(back);
+      //Card 7
+      JButton jbCard7 = new JButton("7 ^^^");
+      jlCard7 = new JLabel();
+      jlCard7.setIcon(back);
+      //Card 8
+      JButton jbCard8 = new JButton("8 ^^^");
+      jlCard8 = new JLabel();
+      jlCard8.setIcon(back);
+      //Card 9
+      JButton jbCard9 = new JButton("9 ^^^");
+      jlCard9 = new JLabel();
+      jlCard9.setIcon(back);
+      //Card 10
+      JButton jbCard10 = new JButton("10 ^^^");
+      jlCard10 = new JLabel();
+      jlCard10.setIcon(back);
       
       JPanel jpChat = new JPanel(new GridLayout(2,1));
       JPanel jpChatSend = new JPanel(new GridLayout(3,1));
       JPanel jpGames = new JPanel(new GridLayout(2,5));
       JPanel jpCard1 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard2 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard3 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard4 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard5 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard6 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard7 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard8 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard9 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard10 = new JPanel(new GridLayout(2,1));
       JPanel jpUser = new JPanel(new GridLayout(1,2));
       
       jpChat.add(jtaChat);
@@ -45,14 +102,41 @@ public class MyGui implements ActionListener{
       jpChatSend.add(jbChat);
       jpCard1.add(jlCard1);
       jpCard1.add(jbCard1);
+      jpCard2.add(jlCard2);
+      jpCard2.add(jbCard2);
+      jpCard3.add(jlCard3);
+      jpCard3.add(jbCard3);
+      jpCard4.add(jlCard4);
+      jpCard4.add(jbCard4);
+      jpCard5.add(jlCard5);
+      jpCard5.add(jbCard5);
+      jpCard6.add(jlCard6);
+      jpCard6.add(jbCard6);
+      jpCard7.add(jlCard7);
+      jpCard7.add(jbCard7);
+      jpCard8.add(jlCard8);
+      jpCard8.add(jbCard8);
+      jpCard9.add(jlCard9);
+      jpCard9.add(jbCard9);
+      jpCard10.add(jlCard10);
+      jpCard10.add(jbCard10);
       jpGames.add(jpCard1);
+      jpGames.add(jpCard2);
+      jpGames.add(jpCard3);
+      jpGames.add(jpCard4);
+      jpGames.add(jpCard5);
+      jpGames.add(jpCard6);
+      jpGames.add(jpCard7);
+      jpGames.add(jpCard8);
+      jpGames.add(jpCard9);
+      jpGames.add(jpCard10);
       jpChat.add(jpChatSend);
       jpClient.add(jpChat, BorderLayout.WEST);
       jpClient.add(jpGames, BorderLayout.EAST);
       jfClient.add(jpClient);
       
       //jfClient.setDefaultCloseOperation(EXIT_ON_CLOSE);
-      jfClient.setSize(600, 350);
+      jfClient.setSize(800, 600);
       jfClient.setVisible(true);
       jpClient.setVisible(true);
       jpChatSend.setVisible(true);
@@ -60,17 +144,19 @@ public class MyGui implements ActionListener{
       jfClient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       jbChat.addActionListener(this);
+      jbCard1.addActionListener(this);
       
       //Game
       
 
    }
+   //!!!!Fix the buttons so they work!!!!!
    public void actionPerformed(ActionEvent ae){
-        Object choice = ae.getActionCommand();
-        sendMessage();
-        //if(choice == "jbChat"){
-        //    sendMessage();
-        //}             
+        if(ae.getActionCommand().equals("jbChat")){
+            sendMessage();
+        } else if(ae.getActionCommand().equals("jbCard1")) {
+           jlCard1.setIcon(c2);
+        }           
    }//action listener
 
    
