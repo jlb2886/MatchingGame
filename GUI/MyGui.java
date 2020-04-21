@@ -5,13 +5,42 @@ import java.awt.*;
 import java.awt.event.*;
 
 import java.util.*;
-
+//Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
 public class MyGui implements ActionListener{
    private JTextField jtfChat;
    private JTextField jtfUser;
    private JLabel jlUser;
-   private Icon back;
-   private Icon c2;
+   private JButton jbChat;
+   private JButton jbCard1;
+   private JButton jbCard2;
+   private JButton jbCard3;
+   private JButton jbCard4;
+   private JButton jbCard5;
+   private JButton jbCard6;
+   private JButton jbCard7;
+   private JButton jbCard8;
+   private JButton jbCard9;
+   private JButton jbCard10;
+   private JButton jbCard11;
+   private JButton jbCard12;
+   private JButton jbCard13;
+   private JButton jbCard14;
+   private JButton jbCard15;
+   private JButton jbCard16;
+   private Icon back = new ImageIcon("BK.png");
+   private Icon c2 = new ImageIcon("C2.png");
+   private Icon c6 = new ImageIcon("C6.png");
+   private Icon cJ = new ImageIcon("CJ.png");
+   private Icon d10 = new ImageIcon("D10.png");
+   private Icon d5 = new ImageIcon("D5.png");
+   private Icon d9 = new ImageIcon("D9.png");
+   private Icon dQ = new ImageIcon("DQ.png");
+   private Icon h4 = new ImageIcon("H4.png");
+   private Icon h8 = new ImageIcon("H8.png");
+   private Icon hK = new ImageIcon("HK.png");
+   private Icon s3 = new ImageIcon("s3.png");
+   private Icon sA = new ImageIcon("SA.png");
+   private Icon[] cards = new Icon[] {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA};
    private JLabel jlCard1;
    private JLabel jlCard2;
    private JLabel jlCard3;
@@ -41,71 +70,69 @@ public class MyGui implements ActionListener{
       jtfChat = new JTextField(20);
       jtfUser = new JTextField(10);
       jlUser = new JLabel("Username: ");
-      JButton jbChat = new JButton("Send");
+      jbChat = new JButton("Send");
       
-      back = new ImageIcon("BK.png");
-      c2 = new ImageIcon("C2.png");
-      JButton jbCard1 = new JButton("1 ^^^");
+      jbCard1 = new JButton("1 ^^^"); //MOVE TO private^^
       jlCard1 = new JLabel();
       jlCard1.setIcon(back);
       //Card 2
-      JButton jbCard2 = new JButton("2 ^^^");
+      jbCard2 = new JButton("2 ^^^");
       jlCard2 = new JLabel();
       jlCard2.setIcon(back);
       //Card 3
-      JButton jbCard3 = new JButton("3 ^^^");
+      jbCard3 = new JButton("3 ^^^");
       jlCard3 = new JLabel();
       jlCard3.setIcon(back);
       //Card 4
-      JButton jbCard4 = new JButton("4 ^^^");
+      jbCard4 = new JButton("4 ^^^");
       jlCard4 = new JLabel();
       jlCard4.setIcon(back);
       //Card 5
-      JButton jbCard5 = new JButton("5 ^^^");
+      jbCard5 = new JButton("5 ^^^");
       jlCard5 = new JLabel();
       jlCard5.setIcon(back);
       //Card 6
-      JButton jbCard6 = new JButton("6 ^^^");
+      jbCard6 = new JButton("6 ^^^");
       jlCard6 = new JLabel();
       jlCard6.setIcon(back);
       //Card 7
-      JButton jbCard7 = new JButton("7 ^^^");
+      jbCard7 = new JButton("7 ^^^");
       jlCard7 = new JLabel();
       jlCard7.setIcon(back);
       //Card 8
-      JButton jbCard8 = new JButton("8 ^^^");
+      jbCard8 = new JButton("8 ^^^");
       jlCard8 = new JLabel();
       jlCard8.setIcon(back);
       //Card 9
-      JButton jbCard9 = new JButton("9 ^^^");
+      jbCard9 = new JButton("9 ^^^");
       jlCard9 = new JLabel();
       jlCard9.setIcon(back);
       //Card 10
-      JButton jbCard10 = new JButton("10 ^^^");
+      jbCard10 = new JButton("10 ^^^");
       jlCard10 = new JLabel();
       jlCard10.setIcon(back);
       //Card 11
-      JButton jbCard11 = new JButton("11 ^^^");
+      jbCard11 = new JButton("11 ^^^");
       jlCard11 = new JLabel();
       jlCard11.setIcon(back);
       //Card 12
-      JButton jbCard12 = new JButton("12 ^^^");
+      jbCard12 = new JButton("12 ^^^");
       jlCard12 = new JLabel();
       jlCard12.setIcon(back);
       //Card 13
-      JButton jbCard13 = new JButton("13 ^^^");
+      jbCard13 = new JButton("13 ^^^");
       jlCard13 = new JLabel();
       jlCard13.setIcon(back);
       //Card 14
-      JButton jbCard14 = new JButton("14 ^^^");
+      jbCard14 = new JButton("14 ^^^");
       jlCard14 = new JLabel();
       jlCard14.setIcon(back);
       //Card 15
-      JButton jbCard15 = new JButton("15 ^^^");
+      jbCard15 = new JButton("15 ^^^");
       jlCard15 = new JLabel();
       jlCard15.setIcon(back);
       //Card 16
-      JButton jbCard16 = new JButton("16 ^^^");
+      jbCard16 = new JButton("16 ^^^");
       jlCard16 = new JLabel();
       jlCard16.setIcon(back);
       
@@ -199,18 +226,45 @@ public class MyGui implements ActionListener{
 
       jbChat.addActionListener(this);
       jbCard1.addActionListener(this);
-      
-      //Game
-      
 
    }
-   //!!!!Fix the buttons so they work!!!!!
+
    public void actionPerformed(ActionEvent ae){
-        if(ae.getActionCommand().equals("jbChat")){
+        if(ae.getSource() == jbChat){
             sendMessage();
-        } else if(ae.getActionCommand().equals("jbCard1")) {
-           jlCard1.setIcon(c2);
-        }           
+        } else if(ae.getSource() == jbCard1) {
+           getIcon(1);
+        } else if(ae.getSource() == jbCard2) {
+           getIcon(2);
+        } else if(ae.getSource() == jbCard3) {
+           getIcon(3);
+        } else if(ae.getSource() == jbCard4) {
+           getIcon(4);
+        } else if(ae.getSource() == jbCard5) {
+           getIcon(5);
+        } else if(ae.getSource() == jbCard6) {
+           getIcon(6);
+        } else if(ae.getSource() == jbCard7) {
+           getIcon(7);
+        } else if(ae.getSource() == jbCard8) {
+           getIcon(8);
+        } else if(ae.getSource() == jbCard9) {
+           getIcon(9);
+        } else if(ae.getSource() == jbCard10) {
+           getIcon(10);
+        } else if(ae.getSource() == jbCard11) {
+           getIcon(11);
+        } else if(ae.getSource() == jbCard12) {
+           getIcon(12);
+        } else if(ae.getSource() == jbCard13) {
+           getIcon(13);
+        } else if(ae.getSource() == jbCard14) {
+           getIcon(14);
+        } else if(ae.getSource() == jbCard15) {
+           getIcon(15);
+        } else if(ae.getSource() == jbCard16) {
+           getIcon(16);
+        }
    }//action listener
 
    
@@ -258,6 +312,15 @@ public class MyGui implements ActionListener{
         pw.flush();
         jtfChat.setText(null);
                     
+   }
+   
+   public void getIcon(int inPosition){
+      //Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
+    /*
+      jlCard**.setIcon(cards[arr[inPosition]]);
+      ** = inPosition. How to get that?
+    **/
+      
    }
    public static void main(String[] args) {
       MyGui gui = new MyGui();
