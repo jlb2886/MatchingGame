@@ -22,6 +22,12 @@ public class MyGui implements ActionListener{
    private JLabel jlCard8;
    private JLabel jlCard9;
    private JLabel jlCard10;
+   private JLabel jlCard11;
+   private JLabel jlCard12;
+   private JLabel jlCard13;
+   private JLabel jlCard14;
+   private JLabel jlCard15;
+   private JLabel jlCard16;
    private JTextArea jtaChat;
    private Socket s;
    private BufferedReader br;
@@ -78,10 +84,34 @@ public class MyGui implements ActionListener{
       JButton jbCard10 = new JButton("10 ^^^");
       jlCard10 = new JLabel();
       jlCard10.setIcon(back);
+      //Card 11
+      JButton jbCard11 = new JButton("11 ^^^");
+      jlCard11 = new JLabel();
+      jlCard11.setIcon(back);
+      //Card 12
+      JButton jbCard12 = new JButton("12 ^^^");
+      jlCard12 = new JLabel();
+      jlCard12.setIcon(back);
+      //Card 13
+      JButton jbCard13 = new JButton("13 ^^^");
+      jlCard13 = new JLabel();
+      jlCard13.setIcon(back);
+      //Card 14
+      JButton jbCard14 = new JButton("14 ^^^");
+      jlCard14 = new JLabel();
+      jlCard14.setIcon(back);
+      //Card 15
+      JButton jbCard15 = new JButton("15 ^^^");
+      jlCard15 = new JLabel();
+      jlCard15.setIcon(back);
+      //Card 16
+      JButton jbCard16 = new JButton("16 ^^^");
+      jlCard16 = new JLabel();
+      jlCard16.setIcon(back);
       
       JPanel jpChat = new JPanel(new GridLayout(2,1));
       JPanel jpChatSend = new JPanel(new GridLayout(3,1));
-      JPanel jpGames = new JPanel(new GridLayout(2,5));
+      JPanel jpGames = new JPanel(new GridLayout(4,4));
       JPanel jpCard1 = new JPanel(new GridLayout(2,1));
       JPanel jpCard2 = new JPanel(new GridLayout(2,1));
       JPanel jpCard3 = new JPanel(new GridLayout(2,1));
@@ -92,6 +122,12 @@ public class MyGui implements ActionListener{
       JPanel jpCard8 = new JPanel(new GridLayout(2,1));
       JPanel jpCard9 = new JPanel(new GridLayout(2,1));
       JPanel jpCard10 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard11 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard12 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard13 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard14 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard15 = new JPanel(new GridLayout(2,1));
+      JPanel jpCard16 = new JPanel(new GridLayout(2,1));
       JPanel jpUser = new JPanel(new GridLayout(1,2));
       
       jpChat.add(jtaChat);
@@ -120,6 +156,18 @@ public class MyGui implements ActionListener{
       jpCard9.add(jbCard9);
       jpCard10.add(jlCard10);
       jpCard10.add(jbCard10);
+      jpCard11.add(jlCard11);
+      jpCard11.add(jbCard11);
+      jpCard12.add(jlCard12);
+      jpCard12.add(jbCard12);
+      jpCard13.add(jlCard13);
+      jpCard13.add(jbCard13);
+      jpCard14.add(jlCard14);
+      jpCard14.add(jbCard14);
+      jpCard15.add(jlCard15);
+      jpCard15.add(jbCard15);
+      jpCard16.add(jlCard16);
+      jpCard16.add(jbCard16);
       jpGames.add(jpCard1);
       jpGames.add(jpCard2);
       jpGames.add(jpCard3);
@@ -130,13 +178,19 @@ public class MyGui implements ActionListener{
       jpGames.add(jpCard8);
       jpGames.add(jpCard9);
       jpGames.add(jpCard10);
+      jpGames.add(jpCard11);
+      jpGames.add(jpCard12);
+      jpGames.add(jpCard13);
+      jpGames.add(jpCard14);
+      jpGames.add(jpCard15);
+      jpGames.add(jpCard16);
       jpChat.add(jpChatSend);
       jpClient.add(jpChat, BorderLayout.WEST);
       jpClient.add(jpGames, BorderLayout.EAST);
       jfClient.add(jpClient);
       
       //jfClient.setDefaultCloseOperation(EXIT_ON_CLOSE);
-      jfClient.setSize(800, 600);
+      jfClient.setSize(600, 600);
       jfClient.setVisible(true);
       jpClient.setVisible(true);
       jpChatSend.setVisible(true);
