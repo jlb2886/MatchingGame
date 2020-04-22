@@ -324,9 +324,10 @@ public class MyGui implements ActionListener{
         jtfChat.setText(null);
    }
 
-
    
-   public void getIcon(int _inPosition){
+   // Sets the images for the cards once a button is clicked
+   public void getIcon(int inPosition){
+
       //Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
    int inPosition = _inPosition;
       
