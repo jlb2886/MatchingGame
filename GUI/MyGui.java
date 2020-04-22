@@ -227,6 +227,22 @@ public class MyGui implements ActionListener{
 
       jbChat.addActionListener(this);
       jbCard1.addActionListener(this);
+      jbCard2.addActionListener(this);
+      jbCard3.addActionListener(this);
+      jbCard4.addActionListener(this);
+      jbCard5.addActionListener(this);
+      jbCard6.addActionListener(this);
+      jbCard7.addActionListener(this);
+      jbCard8.addActionListener(this);
+      jbCard9.addActionListener(this);
+      jbCard10.addActionListener(this);
+      jbCard11.addActionListener(this);
+      jbCard12.addActionListener(this);
+      jbCard13.addActionListener(this);
+      jbCard14.addActionListener(this);
+      jbCard15.addActionListener(this);
+      jbCard16.addActionListener(this);
+
 
    }
 
@@ -287,7 +303,7 @@ public class MyGui implements ActionListener{
             String read = br.readLine();
             String cmd = read.substring(0,3);
             if (cmd.equalsIgnoreCase("LOC") == true) {
-               for(int p = 3; p < 18; p++) {
+               for(int p = 3; p <= 18; p++) {
                   int pos = p-3;
                   loc[pos] = Integer.parseInt(read.substring(p,p+1));
                }
