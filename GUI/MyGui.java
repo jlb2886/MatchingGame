@@ -41,6 +41,7 @@ public class MyGui implements ActionListener{
    private Icon s3 = new ImageIcon("s3.png");
    private Icon sA = new ImageIcon("SA.png");
    private Icon[] cards = new Icon[] {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA};
+   private int[] loc =  {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
    private JLabel jlCard1;
    private JLabel jlCard2;
    private JLabel jlCard3;
@@ -233,37 +234,37 @@ public class MyGui implements ActionListener{
         if(ae.getSource() == jbChat){
             sendMessage();
         } else if(ae.getSource() == jbCard1) {
-           getIcon(1);
+           getIcon(0);
         } else if(ae.getSource() == jbCard2) {
-           getIcon(2);
+           getIcon(1);
         } else if(ae.getSource() == jbCard3) {
-           getIcon(3);
+           getIcon(2);
         } else if(ae.getSource() == jbCard4) {
-           getIcon(4);
+           getIcon(3);
         } else if(ae.getSource() == jbCard5) {
-           getIcon(5);
+           getIcon(4);
         } else if(ae.getSource() == jbCard6) {
-           getIcon(6);
+           getIcon(5);
         } else if(ae.getSource() == jbCard7) {
-           getIcon(7);
+           getIcon(6);
         } else if(ae.getSource() == jbCard8) {
-           getIcon(8);
+           getIcon(7);
         } else if(ae.getSource() == jbCard9) {
-           getIcon(9);
+           getIcon(8);
         } else if(ae.getSource() == jbCard10) {
-           getIcon(10);
+           getIcon(9);
         } else if(ae.getSource() == jbCard11) {
-           getIcon(11);
+           getIcon(10);
         } else if(ae.getSource() == jbCard12) {
-           getIcon(12);
+           getIcon(11);
         } else if(ae.getSource() == jbCard13) {
-           getIcon(13);
+           getIcon(12);
         } else if(ae.getSource() == jbCard14) {
-           getIcon(14);
+           getIcon(13);
         } else if(ae.getSource() == jbCard15) {
-           getIcon(15);
+           getIcon(14);
         } else if(ae.getSource() == jbCard16) {
-           getIcon(16);
+           getIcon(15);
         }
    }//action listener
 
@@ -283,7 +284,17 @@ public class MyGui implements ActionListener{
          //out to client
          pw = new PrintWriter(new OutputStreamWriter(s.getOutputStream()));
          while(true){
-            jtaChat.append(br.readLine()+"\n");
+            String read = br.readLine();
+            String cmd = read.substring(0,3);
+            if (cmd.equalsIgnoreCase("LOC") == true) {
+               for(int p = 3; p < 18; p++) {
+                  int pos = p-3;
+                  loc[pos] = Integer.parseInt(read.substring(p,p+1));
+               }
+            } else {
+               jtaChat.append(read+"\n");
+            }
+
          }
          //terminate the program
          //br.close();
@@ -306,53 +317,52 @@ public class MyGui implements ActionListener{
            str = "Client";
         }
         else {
-           str = jtfUser.getText()+": "+jtfChat.getText();
+           str = /*jtfUser.getText()+": "+*/jtfChat.getText();
         }
         pw.println(str);
         pw.flush();
         jtfChat.setText(null);
-                    
    }
+
+
    
-   public void getIcon(int inPosition){
+   public void getIcon(int _inPosition){
       //Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
-    /*
-      *arr = array from server*
+   int inPosition = _inPosition;
       
-      if(inPosition == 1) {
-         jlCard1.setIcon(cards[arr[inPosition]]);
+      if(inPosition == 0) {
+         jlCard1.setIcon(cards[loc[inPosition]]);
+      } else if(inPosition == 1) {
+         jlCard2.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 2) {
-         jlCard2.setIcon(cards[arr[inPosition]]);
+         jlCard3.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 3) {
-         jlCard3.setIcon(cards[arr[inPosition]]);
+         jlCard4.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 4) {
-         jlCard4.setIcon(cards[arr[inPosition]]);
+         jlCard5.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 5) {
-         jlCard5.setIcon(cards[arr[inPosition]]);
+         jlCard6.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 6) {
-         jlCard6.setIcon(cards[arr[inPosition]]);
+         jlCard7.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 7) {
-         jlCard7.setIcon(cards[arr[inPosition]]);
+         jlCard8.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 8) {
-         jlCard8.setIcon(cards[arr[inPosition]]);
+         jlCard9.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 9) {
-         jlCard9.setIcon(cards[arr[inPosition]]);
+         jlCard10.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 10) {
-         jlCard10.setIcon(cards[arr[inPosition]]);
+         jlCard11.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 11) {
-         jlCard11.setIcon(cards[arr[inPosition]]);
+         jlCard12.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 12) {
-         jlCard12.setIcon(cards[arr[inPosition]]);
+         jlCard13.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 13) {
-         jlCard13.setIcon(cards[arr[inPosition]]);
+         jlCard14.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 14) {
-         jlCard14.setIcon(cards[arr[inPosition]]);
+         jlCard15.setIcon(cards[loc[inPosition]]);
       } else if(inPosition == 15) {
-         jlCard15.setIcon(cards[arr[inPosition]]);
-      } else if(inPosition == 16) {
-         jlCard16.setIcon(cards[arr[inPosition]]);
+         jlCard16.setIcon(cards[loc[inPosition]]);
       }
-    **/
       
    }
    public static void main(String[] args) {
