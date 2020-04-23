@@ -3,13 +3,12 @@ import java.net.*;
 import javax.swing.*;
 import java.awt.*;
 import static java.lang.System.out;
-import java.util.Vector;
 import java.util.*;
 
 public class ChatboxServer {
 
    ArrayList<String> users = new ArrayList<String>();
-   ArrayList<HandleClient> clients = new ArrayList<HandleClient>();
+   ArrayList<HandleClientThread> clients = new ArrayList<HandleClientThread>();
    
    public void processServer() throws Exception {
    
@@ -20,7 +19,7 @@ public class ChatboxServer {
       
          Socket client = server.accept();
          //add incoming client to connected clients vector.
-         HandleClient c = new HandleClient(client);
+         HandleClientThread c = new HandleClientThread(client);
          clients.add(c);
          
       }  // end of while
@@ -36,17 +35,17 @@ public class ChatboxServer {
    public void broadcast(String user, String message) {
    
       // send message to all connected users
-      for (HandleClient c : clients) {
+      for (HandleClientThread c : clients) {
       
          c.sendMessage(user, message);
          
          if(message == " Has connected!") {
-            
+         
             c.listUsers();
             
-         }
+         } //if
       
-      }
+      } //for
       
    } //broadcast
       
@@ -54,13 +53,13 @@ public class ChatboxServer {
     * Inner class, responsible of handling incoming clients.
     * Each connected client will set as it's own thread.
     */
-   class HandleClient extends Thread {
+   class HandleClientThread extends Thread {
    
       String name = "";//client name/username
       BufferedReader input;//get input from client
       PrintWriter output;//send output to client
       
-      public HandleClient(Socket client) throws Exception {
+      public HandleClientThread(Socket client) throws Exception {
       
          // get input and output streams
          input = new BufferedReader(new InputStreamReader(client.getInputStream()));
@@ -73,7 +72,7 @@ public class ChatboxServer {
          // listUsers();
          start();
          
-      } //HandleClient
+      } //HandleClientThread
       
       public void sendMessage(String uname, String msg) {
       
@@ -83,7 +82,7 @@ public class ChatboxServer {
       
       public void getOnlineUsers() {
       
-         for (HandleClient c : clients) {
+         for (HandleClientThread c : clients) {
          
             for (int i = 0; i < users.size(); i++) {
             
@@ -97,7 +96,7 @@ public class ChatboxServer {
       
       public void listUsers() { /* ---------------------------- */
    
-         for (HandleClient c : clients) {
+         for (HandleClientThread c : clients) {
          
             for (int i = 0; i < users.size(); i++) {
             

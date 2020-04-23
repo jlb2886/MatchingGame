@@ -29,10 +29,10 @@ public class ChatboxClient extends JFrame implements ActionListener {
       pw.println(username);  // send name to server
       
       //bring up the chat gui
-      buildInterface();
+      buildGUI();
       new MessagesThread().start();  // create thread that listens for messages
       
-      if (jtaMessages.getText().contains("Has connected!")) {
+      if (jtaMessages.getText().contains("(online)")) {
             
          new UserListThread().start();  // create thread that listens for user to be connected
             
@@ -40,7 +40,7 @@ public class ChatboxClient extends JFrame implements ActionListener {
    
    } //ChatboxClient
    
-   public void buildInterface() {
+   public void buildGUI() {
    
       btnSend = new JButton("Send");
       btnExit = new JButton("Exit");
@@ -76,13 +76,14 @@ public class ChatboxClient extends JFrame implements ActionListener {
       bp.add(btnExit);
       add(bp, "South");
       btnSend.addActionListener(this);
-      jtfInput.addActionListener(this);//allow user to press Enter key in order to send message
+         //enter key will send
+      jtfInput.addActionListener(this);
       btnExit.addActionListener(this);
       setSize(500, 300);
       setVisible(true);
       pack();
       
-   } //Build Interface
+   } //Build GUI
    
    @Override
    public void actionPerformed(ActionEvent e) {
