@@ -9,12 +9,12 @@ import java.util.*;
 public class ChatboxServer {
 
    ArrayList<String> users = new ArrayList<String>();
-   Vector<HandleClient> clients = new Vector<HandleClient>();
+   ArrayList<HandleClient> clients = new ArrayList<HandleClient>();
    
-   public void process() throws Exception {
+   public void processServer() throws Exception {
    
       ServerSocket server = new ServerSocket(16789);
-      out.println("Server Started...");
+      out.println("Server Started (Connect to Clients)");
       
       while (true) {
       
@@ -25,11 +25,11 @@ public class ChatboxServer {
          
       }  // end of while
       
-   } //process
+   } //processServer
    
    public static void main(String... args) throws Exception {
    
-      new ChatboxServer().process();
+      new ChatboxServer().processServer();
       
    } // end of main
    
@@ -39,6 +39,12 @@ public class ChatboxServer {
       for (HandleClient c : clients) {
       
          c.sendMessage(user, message);
+         
+         if(message == " Has connected!") {
+            
+            c.listUsers();
+            
+         }
       
       }
       
@@ -64,7 +70,7 @@ public class ChatboxServer {
          name = input.readLine();
          users.add(name); // add to users vector
          broadcast(name, " Has connected!");
-         listUsers();
+         // listUsers();
          start();
          
       } //HandleClient
@@ -95,7 +101,7 @@ public class ChatboxServer {
          
             for (int i = 0; i < users.size(); i++) {
             
-               output.println(users.get(i));
+               output.println(users.get(i) + " (online)");
             
             } //for
          
@@ -129,12 +135,7 @@ public class ChatboxServer {
                   users.remove(name);
                   break;
                
-               } else if(line.equals("!getusers")){ /** if user types in !getusers it will print out */
-               
-                  getOnlineUsers();
-                  break;
-                  
-               }
+               } //if
                
                broadcast(name, line); // method  of outer class - send messages to all
                

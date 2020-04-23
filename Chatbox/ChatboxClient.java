@@ -28,10 +28,15 @@ public class ChatboxClient extends JFrame implements ActionListener {
       pw = new PrintWriter(client.getOutputStream(), true);
       pw.println(username);  // send name to server
       
-      //bring up the chat interface
+      //bring up the chat gui
       buildInterface();
       new MessagesThread().start();  // create thread that listens for messages
-      new UserListThread().start();  // create thread that listens for user to be connected
+      
+      if (jtaMessages.getText().contains("Has connected!")) {
+            
+         new UserListThread().start();  // create thread that listens for user to be connected
+            
+      }
    
    } //ChatboxClient
    
@@ -86,10 +91,6 @@ public class ChatboxClient extends JFrame implements ActionListener {
       
          pw.println("disconnecting");  // send end to server so that server know about the termination
          System.exit(0);
-         
-      } else if(jtfInput.getText().contains("!getusers")){
-      
-         pw.println("!getusers");
          
       }else{
       
