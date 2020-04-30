@@ -1,2 +1,0 @@
-# MatchingGame
-Java Project
