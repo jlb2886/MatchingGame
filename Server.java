@@ -1,14 +1,15 @@
 import java.net.*;//all network classes
 import java.io.*;//all read/write operations
-
-public class MyMultiThreadedServer{
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+public class Server{
    public static void main(String[] args){
       
-      new MyMultiThreadedServer();
+      new Server();
             
    }//main
    
-   public MyMultiThreadedServer(){
+   public Server(){
       
          try{
          
@@ -48,6 +49,36 @@ public class MyMultiThreadedServer{
       
       public ThreadServer(Socket cs){
          this.cs = cs;
+      }
+      
+      public String generateRandom() {
+         ArrayList<Integer> randomString = new ArrayList<Integer>();
+         String random = "";
+         for(int j = 0; j <16; j++) {
+            randomString.add(j,-1);
+         }
+         for(int i=0; i<8; i++) {
+            int card = ThreadLocalRandom.current().nextInt(0, 9);
+            if (randomString.contains(card) == true) {
+            System.out.println("CARD " + card + " already exists in the random string");
+            while(randomString.contains(card) == true) {
+               card = ThreadLocalRandom.current().nextInt(0, 9);
+            }
+            } else {}
+            System.out.println("CARD: " + card);
+            int pos = ThreadLocalRandom.current().nextInt(0, 16);
+            System.out.println("Position 1 of card: " + pos);
+            int pos2 = ThreadLocalRandom.current().nextInt(0, 16);
+            System.out.println("Position 2 of card: " + pos2);
+            randomString.add(pos, card);
+            randomString.add(pos2, card);
+            }
+            for(int temp : randomString) {
+               if(temp != -1 ) {
+                  random = random + temp;
+               } else {}
+         }
+         return "LOC" + random;
       }
       
       public void run(){
