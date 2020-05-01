@@ -126,7 +126,7 @@ class Game {
                      outs.get(i).println(msg);
                      outs.get(i).flush();
                   }
-                  if (opponent != null && opponent.output != null) {
+                  if (opponent == null && opponent.output == null) {
                     opponent.output.println("OTHER_PLAYER_LEFT");
                     break;
                   }
