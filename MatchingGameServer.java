@@ -9,6 +9,14 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.*;
 
+/**
+ * MatchingGameServer will read input from clients in order to send those messages
+ * over to the client side. 
+ * ISTE-121 Project
+ * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli Julianna Baker
+ * @version 05-01-20
+ */
+
 public class MatchingGameServer {
 
     public static void main(String[] args) throws Exception {
@@ -53,6 +61,10 @@ public class MatchingGameServer {
     }
 }
 
+/**
+ * This class will show different aspects of the game in order to establish useful variables
+ * to the client.
+ */
 class Game {
 
     // Board cells numbered 0-8, top to bottom, left to right; null if empty
@@ -64,12 +76,20 @@ class Game {
 //         //what makes them the winner goes here
 //     }
 
+    /**
+     * This method waits before the players can make a move in order for them to wait to 
+     * start the game until the player joins them.
+     */
     public synchronized void move(int location, Player player) {
         if (player.opponent == null) {
             throw new IllegalStateException("You don't have an opponent yet");
         }
-    }
+    }//move
 
+    /**
+     * Inner class Player will run server sockets for the platers and randomize the 
+     * cards so that each game can be different.
+     */
     class Player implements Runnable {
         String player;
         Player opponent;
@@ -78,14 +98,21 @@ class Game {
         PrintWriter output;
         String order;
         ArrayList<PrintWriter> outs;
-
+        
+        /**
+         * Player constructor will set all of the variables when created.
+         */
         public Player(Socket socket, String player, String randomized, ArrayList _outs) {
             this.socket = socket;
             this.player = player;
             this.order = randomized;
             this.outs = _outs;
-        }
-
+        } //constructor
+        
+        /**
+         * Run will be checking for different aspects that could go on 
+         * throughout the game.
+         */
         @Override
         public void run() {
             try {
@@ -112,6 +139,9 @@ class Game {
             }
         }
         
+        /**
+         * setup connects platers after waiting for an opponent to connect.
+         */
         private void setup() throws IOException {
             input = new Scanner(socket.getInputStream());
             output = new PrintWriter(socket.getOutputStream(), true);
@@ -125,7 +155,6 @@ class Game {
             } else {
                 opponent = currentPlayer;
                 opponent.opponent = this;
-                // opponent.output.println("MESSAGE Your move");
             }
         }
     }
