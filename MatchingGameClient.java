@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.awt.event.*;
-
+import java.util.*;
 import java.net.*; //All network classes
 import java.io.*; //All read/write operations
 import javax.swing.*;
@@ -20,9 +20,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * MatchingGame Client Class will create the GUI on the client side
+ * This class will also allow for a client to message with another client
+ * ISTE-121 Project
+ * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli Julianna Baker
+ * @version 05-01-20
+ */
 
 public class MatchingGameClient implements ActionListener{
-
+   
+   //Variables
    private JTextField jtfChat;
    private JTextField jtfUser;
    private JLabel jlUser;
@@ -75,15 +83,23 @@ public class MatchingGameClient implements ActionListener{
    private JLabel jlCard15;
    private JLabel jlCard16;
    private JTextArea jtaChat;
+   ArrayList<Integer> matched = new ArrayList<Integer>();
+   private int selCard1;
+   private int selCard2;
    
    //attributes for server & client connection
    private Socket socket;
    private PrintWriter out;
    private BufferedReader br;
    private Scanner in; //scanner
-
-    public MatchingGameClient() {
+   
+   /**
+    * The constructor MatchingGameClient will create the GUI.
+    */
+   public MatchingGameClient() {
         
+         selCard1 = -1;
+         selCard2 = -1;
          //Chat
          JFrame jfClient = new JFrame("Matching Game Client");
          JPanel jpClient = new JPanel(new BorderLayout());
@@ -157,6 +173,7 @@ public class MatchingGameClient implements ActionListener{
          jlCard16 = new JLabel();
          jlCard16.setIcon(back);
          
+         //Creating GridLayouts
          JPanel jpChat = new JPanel(new GridLayout(2,1));
          JPanel jpChatSend = new JPanel(new GridLayout(3,1));
          JPanel jpGames = new JPanel(new GridLayout(4,4));
@@ -178,6 +195,7 @@ public class MatchingGameClient implements ActionListener{
          JPanel jpCard16 = new JPanel(new GridLayout(2,1));
          JPanel jpUser = new JPanel(new GridLayout(1,2));
          
+         //Adding to the panel
          jpChat.add(jtaChat);
          jpUser.add(jlUser);
          jpUser.add(jtfUser);
@@ -237,6 +255,7 @@ public class MatchingGameClient implements ActionListener{
          jpClient.add(jpGames, BorderLayout.EAST);
          jfClient.add(jpClient);
          
+         //setting visibilities and exit on close
          //jfClient.setDefaultCloseOperation(EXIT_ON_CLOSE);
          jfClient.setSize(600, 600);
          jfClient.setVisible(true);
@@ -245,7 +264,8 @@ public class MatchingGameClient implements ActionListener{
          jpGames.setVisible(true);
          jfClient.setLocationRelativeTo(null);
          jfClient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   
+         
+         //Adding JButtons to Action Listener
          jbChat.addActionListener(this);
          jbCard1.addActionListener(this);
          jbCard2.addActionListener(this);
@@ -263,46 +283,126 @@ public class MatchingGameClient implements ActionListener{
          jbCard14.addActionListener(this);
          jbCard15.addActionListener(this);
          jbCard16.addActionListener(this);
-    }
+         
+    } //constructor
     
+    /**
+     * Action Performed method takes in an Action event. Determines what
+     * happens to buttons when they are pressed.
+     */
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == jbChat){
             sendMessage();
         } else if(ae.getSource() == jbCard1) {
            getIcon(0);
+           if (selCard1 == -1) {
+              selCard1 = 0;
+           } else { selCard2 = 0; }
         } else if(ae.getSource() == jbCard2) {
            getIcon(1);
+           if (selCard1 == -1) {
+              selCard1 = 1;
+           } else { selCard2 = 1; }
         } else if(ae.getSource() == jbCard3) {
            getIcon(2);
+           if (selCard1 == -1) {
+              selCard1 = 2;
+           } else { selCard2 = 2; }
         } else if(ae.getSource() == jbCard4) {
            getIcon(3);
+           if (selCard1 == -1) {
+              selCard1 = 3;
+           } else { selCard2 = 3; }
         } else if(ae.getSource() == jbCard5) {
            getIcon(4);
+           if (selCard1 == -1) {
+              selCard1 = 4;
+           } else { selCard2 = 4; }
         } else if(ae.getSource() == jbCard6) {
            getIcon(5);
+           if (selCard1 == -1) {
+              selCard1 = 5;
+           } else { selCard2 = 5; }
         } else if(ae.getSource() == jbCard7) {
            getIcon(6);
+           if (selCard1 == -1) {
+              selCard1 = 6;
+           } else { selCard2 = 6; }
         } else if(ae.getSource() == jbCard8) {
            getIcon(7);
+           if (selCard1 == -1) {
+              selCard1 = 7;
+           } else { selCard2 = 7; }
         } else if(ae.getSource() == jbCard9) {
            getIcon(8);
+           if (selCard1 == -1) {
+              selCard1 = 8;
+           } else { selCard2 = 8; }
         } else if(ae.getSource() == jbCard10) {
            getIcon(9);
+           if (selCard1 == -1) {
+              selCard1 = 9;
+           } else { selCard2 = 9; }
         } else if(ae.getSource() == jbCard11) {
            getIcon(10);
+           if (selCard1 == -1) {
+              selCard1 = 10;
+           } else { selCard2 = 10; }
         } else if(ae.getSource() == jbCard12) {
            getIcon(11);
+           if (selCard1 == -1) {
+              selCard1 = 11;
+           } else { selCard2 = 11; }
         } else if(ae.getSource() == jbCard13) {
            getIcon(12);
+           if (selCard1 == -1) {
+              selCard1 = 12;
+           } else { selCard2 = 12; }
         } else if(ae.getSource() == jbCard14) {
            getIcon(13);
+           if (selCard1 == -1) {
+              selCard1 = 13;
+           } else { selCard2 = 13; }
         } else if(ae.getSource() == jbCard15) {
            getIcon(14);
+           if (selCard1 == -1) {
+              selCard1 = 14;
+           } else { selCard2 = 14; }
         } else if(ae.getSource() == jbCard16) {
            getIcon(15);
+           if (selCard1 == -1) {
+              selCard1 = 15;
+           } else { selCard2 = 15; }
+        }
+        if (selCard1 != -1 && selCard2 != -1) {
+           this.verifyMatch(selCard1, selCard2);
         }
    }//action listener
+
+   /**
+    * Checks to see wheter to cards are matched or not
+    * if its matched it adds the card to the matched cards arraylist
+    * once done it resets the selected cards -1
+    */
+   public void verifyMatch(int card1, int card2) {
+      if (matched.contains(loc[card1]) == false && matched.contains(loc[card2]) == false) {
+         if (loc[card1] != loc[card2]) {
+            this.setBlank(card1);
+            this.setBlank(card2);
+         } else {
+            matched.add(loc[card1]);
+            if (matched.size() == 8) {
+               jtaChat.append("YOU WON");
+            }
+         }
+         selCard1 = -1;
+         selCard2 = -1;
+      }         
+   }
    
+   /**
+    * Reads the line from the server that is sent from another player.
+    */
    public void message(){
       try{
          socket = new Socket("localhost", 16788); //localhost for now
@@ -335,6 +435,9 @@ public class MatchingGameClient implements ActionListener{
 
    } //message
    
+   /**
+    * sendMessage allows for the client to send a message back to a player.
+    */
    public void sendMessage(){
         String str = "";
         String user = jtfUser.getText();
@@ -350,7 +453,49 @@ public class MatchingGameClient implements ActionListener{
         jtfChat.setText(null);
    } //sendMessage
    
-   // Sets the images for the cards once a button is clicked
+   /* 
+    * Sets the image for the selected card to blank; only used if a card doesnt match
+    */
+   public void setBlank(int card) {
+      if(card == 0) {
+         jlCard1.setIcon(back);
+      } else if(card == 1) {
+         jlCard2.setIcon(back);
+      } else if(card == 2) {
+         jlCard3.setIcon(back);
+      } else if(card == 3) {
+         jlCard4.setIcon(back);
+      } else if(card == 4) {
+         jlCard5.setIcon(back);
+      } else if(card == 5) {
+         jlCard6.setIcon(back);
+      } else if(card == 6) {
+         jlCard7.setIcon(back);
+      } else if(card == 7) {
+         jlCard8.setIcon(back);
+      } else if(card == 8) {
+         jlCard9.setIcon(back);
+      } else if(card == 9) {
+         jlCard10.setIcon(back);
+      } else if(card == 10) {
+         jlCard11.setIcon(back);
+      } else if(card == 11) {
+         jlCard12.setIcon(back);
+      } else if(card == 12) {
+         jlCard13.setIcon(back);
+      } else if(card == 13) {
+         jlCard14.setIcon(back);
+      } else if(card == 14) {
+         jlCard15.setIcon(back);
+      } else if(card == 15) {
+         jlCard16.setIcon(back);
+      }
+   }
+
+   
+   /* getIcon will take a position that the card was click and will reveal the cards clicked
+    * Sets the images for the cards once a button is clicked
+    */
    public void getIcon(int inPosition){
       //Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
       
