@@ -7,12 +7,14 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.*;
 
 public class MatchingGameServer {
 
     public static void main(String[] args) throws Exception {
         ArrayList<Integer> randomString = new ArrayList<Integer>();
         ArrayList pws = new ArrayList<PrintWriter>();
+        ExecutorService pool;
         String random = "";
         for(int j = 0; j <16; j++) {
            randomString.add(j,-1);
@@ -39,9 +41,9 @@ public class MatchingGameServer {
             } else {}
          }
            String loc = "LOC" + random;    
-        try (var listener = new ServerSocket(16788)) {
+        try (ServerSocket listener = new ServerSocket(16788)) {
             System.out.println("Matching Game Server is Running...");
-            var pool = Executors.newFixedThreadPool(200);
+            pool = Executors.newFixedThreadPool(200);
             while (true) {
                Game game = new Game();
                 pool.execute(game.new Player(listener.accept(), "PlayerOne", loc, pws));
