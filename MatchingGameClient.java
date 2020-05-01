@@ -24,7 +24,7 @@ import javax.swing.JPanel;
  * MatchingGame Client Class will create the GUI on the client side
  * This class will also allow for a client to message with another client
  * ISTE-121 Project
- * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli
+ * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli Julianna Baker
  * @version 05-01-20
  */
 

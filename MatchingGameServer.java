@@ -13,7 +13,7 @@ import java.util.concurrent.*;
  * MatchingGameServer will read input from clients in order to send those messages
  * over to the client side. 
  * ISTE-121 Project
- * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli
+ * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli Julianna Baker
  * @version 05-01-20
  */
 
