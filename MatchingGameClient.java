@@ -20,9 +20,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * MatchingGame Client Class will create the GUI on the client side
+ * This class will also allow for a client to message with another client
+ * ISTE-121 Project
+ * @authors Nathaniel Pellegrino Robert Heine Fenix Setiawan Vincent Valli
+ * @version 05-01-20
+ */
 
 public class MatchingGameClient implements ActionListener{
-
+   
+   //Variables
    private JTextField jtfChat;
    private JTextField jtfUser;
    private JLabel jlUser;
@@ -81,8 +89,11 @@ public class MatchingGameClient implements ActionListener{
    private PrintWriter out;
    private BufferedReader br;
    private Scanner in; //scanner
-
-    public MatchingGameClient() {
+   
+   /**
+    * The constructor MatchingGameClient will create the GUI.
+    */
+   public MatchingGameClient() {
         
          //Chat
          JFrame jfClient = new JFrame("Matching Game Client");
@@ -157,6 +168,7 @@ public class MatchingGameClient implements ActionListener{
          jlCard16 = new JLabel();
          jlCard16.setIcon(back);
          
+         //Creating GridLayouts
          JPanel jpChat = new JPanel(new GridLayout(2,1));
          JPanel jpChatSend = new JPanel(new GridLayout(3,1));
          JPanel jpGames = new JPanel(new GridLayout(4,4));
@@ -178,6 +190,7 @@ public class MatchingGameClient implements ActionListener{
          JPanel jpCard16 = new JPanel(new GridLayout(2,1));
          JPanel jpUser = new JPanel(new GridLayout(1,2));
          
+         //Adding to the panel
          jpChat.add(jtaChat);
          jpUser.add(jlUser);
          jpUser.add(jtfUser);
@@ -237,6 +250,7 @@ public class MatchingGameClient implements ActionListener{
          jpClient.add(jpGames, BorderLayout.EAST);
          jfClient.add(jpClient);
          
+         //setting visibilities and exit on close
          //jfClient.setDefaultCloseOperation(EXIT_ON_CLOSE);
          jfClient.setSize(600, 600);
          jfClient.setVisible(true);
@@ -245,7 +259,8 @@ public class MatchingGameClient implements ActionListener{
          jpGames.setVisible(true);
          jfClient.setLocationRelativeTo(null);
          jfClient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   
+         
+         //Adding JButtons to Action Listener
          jbChat.addActionListener(this);
          jbCard1.addActionListener(this);
          jbCard2.addActionListener(this);
@@ -263,8 +278,13 @@ public class MatchingGameClient implements ActionListener{
          jbCard14.addActionListener(this);
          jbCard15.addActionListener(this);
          jbCard16.addActionListener(this);
-    }
+         
+    } //constructor
     
+    /**
+     * Action Performed method takes in an Action event. Determines what
+     * happens to buttons when they are pressed.
+     */
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == jbChat){
             sendMessage();
@@ -303,6 +323,9 @@ public class MatchingGameClient implements ActionListener{
         }
    }//action listener
    
+   /**
+    * Reads the line from the server that is sent from another player.
+    */
    public void message(){
       try{
          socket = new Socket("localhost", 16788); //localhost for now
@@ -335,6 +358,9 @@ public class MatchingGameClient implements ActionListener{
 
    } //message
    
+   /**
+    * sendMessage allows for the client to send a message back to a player.
+    */
    public void sendMessage(){
         String str = "";
         String user = jtfUser.getText();
@@ -350,7 +376,9 @@ public class MatchingGameClient implements ActionListener{
         jtfChat.setText(null);
    } //sendMessage
    
-   // Sets the images for the cards once a button is clicked
+   /* getIcon will take a position that the card was click and will reveal the cards clicked
+    * Sets the images for the cards once a button is clicked
+    */
    public void getIcon(int inPosition){
       //Order of Card Images in Array: {c2, c6, cJ, d10, d5, d9, dQ, h4, h8, hK, s3, sA}
       
