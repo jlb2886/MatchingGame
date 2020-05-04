@@ -295,86 +295,86 @@ public class MatchingGameClient implements ActionListener{
             sendMessage();
         } else if(ae.getSource() == jbCard1) {
            getIcon(0);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[0])) {
               selCard1 = 0;
-           } else { selCard2 = 0; }
+           } else { if(selCard1 == 0) {} else { selCard2 = 0; }}
         } else if(ae.getSource() == jbCard2) {
            getIcon(1);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[1])) {
               selCard1 = 1;
-           } else { selCard2 = 1; }
+           } else { if(selCard1 == 1) {} else { selCard2 = 1; }}
         } else if(ae.getSource() == jbCard3) {
            getIcon(2);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[2])) {
               selCard1 = 2;
-           } else { selCard2 = 2; }
+           } else { if(selCard1 == 2) {} else { selCard2 = 2; }}
         } else if(ae.getSource() == jbCard4) {
            getIcon(3);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[3])) {
               selCard1 = 3;
-           } else { selCard2 = 3; }
+           } else { if(selCard1 == 3) {} else { selCard2 = 3; }}
         } else if(ae.getSource() == jbCard5) {
            getIcon(4);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[4])) {
               selCard1 = 4;
-           } else { selCard2 = 4; }
+           } else { if(selCard1 == 4) {} else { selCard2 = 4; }}
         } else if(ae.getSource() == jbCard6) {
            getIcon(5);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[5])) {
               selCard1 = 5;
-           } else { selCard2 = 5; }
+           } else { if(selCard1 == 5) {} else { selCard2 = 5; }}
         } else if(ae.getSource() == jbCard7) {
            getIcon(6);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[6])) {
               selCard1 = 6;
-           } else { selCard2 = 6; }
+           } else { if(selCard1 == 6) {} else { selCard2 = 6; }}
         } else if(ae.getSource() == jbCard8) {
            getIcon(7);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[7])) {
               selCard1 = 7;
-           } else { selCard2 = 7; }
+           } else { if(selCard1 == 7) {} else { selCard2 = 7; }}
         } else if(ae.getSource() == jbCard9) {
            getIcon(8);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[8])) {
               selCard1 = 8;
-           } else { selCard2 = 8; }
+           } else { if(selCard1 == 8) {} else { selCard2 = 8; }}
         } else if(ae.getSource() == jbCard10) {
            getIcon(9);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[9])) {
               selCard1 = 9;
-           } else { selCard2 = 9; }
+           } else { if(selCard1 == 9) {} else { selCard2 = 9; }}
         } else if(ae.getSource() == jbCard11) {
            getIcon(10);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[10])) {
               selCard1 = 10;
-           } else { selCard2 = 10; }
+           } else { if(selCard1 == 10) {} else { selCard2 = 10; }}
         } else if(ae.getSource() == jbCard12) {
            getIcon(11);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[11])) {
               selCard1 = 11;
-           } else { selCard2 = 11; }
+           } else { if(selCard1 == 11) {} else { selCard2 = 11; }}
         } else if(ae.getSource() == jbCard13) {
            getIcon(12);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[12])) {
               selCard1 = 12;
-           } else { selCard2 = 12; }
+           } else { if(selCard1 == 12) {} else { selCard2 = 12; }}
         } else if(ae.getSource() == jbCard14) {
            getIcon(13);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[13])) {
               selCard1 = 13;
-           } else { selCard2 = 13; }
+           } else { if(selCard1 == 13) {} else { selCard2 = 13; }}
         } else if(ae.getSource() == jbCard15) {
            getIcon(14);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[14])) {
               selCard1 = 14;
-           } else { selCard2 = 14; }
+           } else { if(selCard1 == 14) {} else { selCard2 = 14; }}
         } else if(ae.getSource() == jbCard16) {
            getIcon(15);
-           if (selCard1 == -1) {
+           if (selCard1 == -1 && !matched.contains(loc[15])) {
               selCard1 = 15;
-           } else { selCard2 = 15; }
+           } else { if(selCard1 == 15) {} else { selCard2 = 15; }}
         }
-        if (selCard1 != -1 && selCard2 != -1) {
+        if (selCard1 != -1 && selCard2 != -1 && selCard1 != selCard2) {
            this.verifyMatch(selCard1, selCard2);
         }
    }//action listener
